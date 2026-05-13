@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, Heart, Brain, Calendar, MapPin, Phone, Instagram, Linkedin, 
   ChevronRight, MessageCircle, Star, Quote, ArrowRight, User, Music2
