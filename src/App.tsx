@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, Heart, Brain, Calendar, MapPin, Phone, Instagram, Linkedin, 
-  ChevronRight, MessageCircle, Star, Quote, ArrowRight, User, Music2
+  ChevronRight, MessageCircle, Star, Quote, ArrowRight, User, Music2,
+  ArrowUp
 } from 'lucide-react';
 
 const navLinks = [
@@ -666,13 +667,13 @@ export default function App() {
                 "Cuidado é, antes de tudo, presença."
               </p>
               <div className="flex gap-5">
-                <a href="https://instagram.com/placeholder" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-inverse-on-surface/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all duration-300">
+                <a href="https://www.instagram.com/psi.rynahayashi" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-inverse-on-surface/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all duration-300">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://tiktok.com/@placeholder" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-inverse-on-surface/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all duration-300">
+                <a href="https://www.tiktok.com/@rynahayashi.psi" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-inverse-on-surface/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all duration-300">
                   <Music2 className="w-5 h-5" />
                 </a>
-                <a href="https://linkedin.com/in/placeholder" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-inverse-on-surface/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all duration-300">
+                <a href="https://www.linkedin.com/in/ryna-mie-hayashi-wolf-76b15b2a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-inverse-on-surface/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all duration-300">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
@@ -710,6 +711,44 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-4">
+        {/* Scroll to Top */}
+        <AnimatePresence>
+          {isScrolled && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.5, y: 20 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="w-12 h-12 bg-surface backdrop-blur-md border border-outline-variant/30 text-on-surface shadow-xl rounded-full flex items-center justify-center hover:bg-surface-container-high transition-colors group"
+              aria-label="Voltar ao topo"
+            >
+              <ArrowUp className="w-5 h-5 transition-transform group-hover:-translate-y-1" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        {/* WhatsApp Float */}
+        <motion.a
+          href="https://wa.me/5519989578237?text=Olá%20Ryna,%20gostaria%20de%20agendar%20uma%20consulta."
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-14 h-14 bg-[#25D366] text-white shadow-2xl rounded-full flex items-center justify-center hover:brightness-110 transition-all group relative"
+          aria-label="Agendar via WhatsApp"
+        >
+          <div className="absolute -left-40 bg-surface px-4 py-2 rounded-lg shadow-xl border border-outline-variant/30 text-on-surface text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+            Agendar Consulta
+          </div>
+          <MessageCircle className="w-7 h-7" />
+        </motion.a>
+      </div>
     </div>
   );
 }
