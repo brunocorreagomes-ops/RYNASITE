@@ -160,26 +160,27 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+          <div className="container mx-auto px-5 md:px-6">
+            <div className="flex flex-col lg:grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-center lg:text-left order-2 lg:order-1"
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-primary-container text-xs font-semibold tracking-wider uppercase mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-primary-container text-[10px] md:text-xs font-semibold tracking-wider uppercase mb-6 mx-auto lg:mx-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   Atendimento Presencial e Online
                 </div>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-medium text-on-surface leading-[1.1] mb-8">
+                <h1 className="text-3xl md:text-6xl lg:text-7xl font-display font-medium text-on-surface leading-[1.1] mb-6 md:mb-8">
                   Um espaço para <br />
                   <span className="text-primary italic">ser e florescer.</span>
                 </h1>
-                <p className="text-base md:text-lg text-on-surface-variant max-w-lg mb-10 leading-relaxed">
+                <p className="text-sm md:text-lg text-on-surface-variant max-w-lg mb-8 md:mb-10 leading-relaxed mx-auto lg:mx-0">
                   Acolhimento humanizado baseado na fenomenologia. Auxilio você a encontrar equilíbrio e clareza no processo de autodescoberta e cuidado com a saúde mental.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <a 
                     href="https://wa.me/5519989578237?text=Olá%20Ryna,%20gostaria%20de%20agendar%20uma%20consulta."
                     target="_blank"
@@ -208,12 +209,12 @@ export default function App() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
-                className="relative"
+                className="relative order-1 lg:order-2 w-full max-w-[320px] md:max-w-[450px] mx-auto"
               >
-                <div className="relative z-10 hero-arch max-w-[450px] mx-auto border-8 border-surface-container shadow-2xl">
+                <div className="relative z-10 hero-arch aspect-[4/5] overflow-hidden border-4 md:border-8 border-surface-container shadow-2xl">
                   <img 
                     src="https://i.ibb.co/rYdM1ZS/ryna01.png" 
                     alt="Ryna Hayashi" 
@@ -222,16 +223,16 @@ export default function App() {
                   />
                 </div>
                 {/* Decorative elements */}
-                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary-container/50 rounded-full blur-3xl -z-10" />
-                <div className="absolute -top-10 -right-10 w-48 h-48 bg-tertiary-container/30 rounded-full blur-3xl -z-10" />
+                <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-24 md:w-32 h-24 md:h-32 bg-secondary-container/50 rounded-full blur-2xl md:blur-3xl -z-10" />
+                <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-32 md:w-48 h-32 md:h-48 bg-tertiary-container/30 rounded-full blur-2xl md:blur-3xl -z-10" />
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Philosophy Intro */}
-        <section id="sobre" className="py-20 bg-surface-container-low">
-          <div className="container mx-auto px-6">
+        <section id="sobre" className="py-16 md:py-20 bg-surface-container-low">
+          <div className="container mx-auto px-5 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -239,33 +240,33 @@ export default function App() {
                 viewport={{ once: true }}
                 className="mb-8"
               >
-                <Quote className="w-8 h-8 md:w-12 md:h-12 text-primary/20 mx-auto mb-6" />
-                <h2 className="text-2xl md:text-3xl lg:text-5xl mb-8 leading-tight px-4 md:px-0">
+                <Quote className="w-8 h-8 md:w-12 md:h-12 text-primary/20 mx-auto mb-4 md:mb-6" />
+                <h2 className="text-xl md:text-3xl lg:text-5xl mb-6 md:mb-8 leading-tight px-2 md:px-0 font-display italic text-on-surface">
                   "A terapia é o encontro de dois seres humanos em busca de significados e novos horizontes."
                 </h2>
-                <div className="w-16 md:w-20 h-0.5 bg-primary/30 mx-auto" />
+                <div className="w-12 md:w-20 h-0.5 bg-primary/30 mx-auto" />
               </motion.div>
               
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="max-w-2xl mx-auto mt-12 rounded-[2rem] overflow-hidden shadow-2xl rotate-1"
+                className="max-w-2xl mx-auto mt-10 md:mt-12 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl relative"
               >
                 <img 
                   src="https://i.ibb.co/vCZc6ysC/ryna-ensaio-novo-10.png" 
                   alt="Ryna Hayashi em atendimento" 
-                  className="w-full h-[400px] md:h-[500px] object-cover object-top"
+                  className="w-full h-[350px] md:h-[500px] object-cover object-top"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
               
-              <div className="grid md:grid-cols-2 gap-8 mt-12 max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 mt-10 md:mt-12 max-w-4xl mx-auto">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-3xl overflow-hidden shadow-lg h-80 md:h-[450px]"
+                  className="rounded-2xl md:rounded-3xl overflow-hidden shadow-lg h-64 md:h-[450px]"
                 >
                   <img 
                     src="https://i.ibb.co/8gwCR0n7/ryna-ensaio-novo-3.png" 
@@ -278,7 +279,7 @@ export default function App() {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-3xl overflow-hidden shadow-lg h-80 md:h-[450px]"
+                  className="rounded-2xl md:rounded-3xl overflow-hidden shadow-lg h-64 md:h-[450px]"
                 >
                   <img 
                     src="https://i.ibb.co/pBv2HDH1/ryna-ensaio-novo-4.png" 
