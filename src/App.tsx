@@ -16,7 +16,7 @@ const navLinks = [
   { name: 'Contato', href: '#contato' },
 ];
 
-const OFFICIAL_LOGO = "https://i.ibb.co/tTLsP6tr/RYNA-LOGO-FINAL-03.webp";
+const OFFICIAL_LOGO = "https://i.ibb.co/mrnq1f85/RYNA-LOGO-FINAL-TP.png";
 
 const services = [
   {
@@ -67,17 +67,13 @@ export default function App() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-4"
           >
-            <a href="#home" className="flex items-center gap-3">
+            <a href="#home" className="block">
               <img 
                 src={OFFICIAL_LOGO} 
                 alt="Ryna Hayashi Logo" 
-                className="h-10 md:h-12 w-auto object-contain"
+                className="h-12 md:h-16 w-auto object-contain"
                 referrerPolicy="no-referrer"
               />
-              <div className="flex flex-col">
-                <span className="font-display text-lg md:text-xl font-bold text-on-surface leading-tight">Ryna Hayashi</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-widest text-primary font-medium">Psicóloga</span>
-              </div>
             </a>
           </motion.div>
 
