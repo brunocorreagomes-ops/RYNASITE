@@ -9,6 +9,7 @@ const navLinks = [
   { name: 'Início', href: '#home' },
   { name: 'Sobre', href: '#sobre' },
   { name: 'Serviços', href: '#servicos' },
+  { name: 'Depoimentos', href: '#depoimentos' },
   { name: 'Abordagem', href: '#abordagem' },
   { name: 'Blog', href: '#blog' },
   { name: 'Contato', href: '#contato' },
@@ -367,6 +368,71 @@ export default function App() {
                 Saiba como funciona <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section id="depoimentos" className="py-24 bg-surface-container-low overflow-hidden">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 font-display">Acolhimento e Transformação</h2>
+              <p className="text-on-surface-variant max-w-2xl mx-auto">
+                Relatos anônimos de quem confiou sua jornada ao nosso espaço de cuidado.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  text: "Ryna é uma profissional de uma sensibilidade ímpar. O ambiente é seguro e me sinto genuinamente acolhida em todas as sessões.",
+                  author: "A.P.",
+                  info: "Paciente há 1 ano",
+                  initials: "AP"
+                },
+                {
+                  text: "Encontrei na terapia com a Ryna o espaço que precisava para florescer e compreender minhas angústias sem pressa e com muita ética.",
+                  author: "M.R.",
+                  info: "Paciente Presencial",
+                  initials: "MR"
+                },
+                {
+                  text: "O atendimento online superou minhas expectativas. Sinto a mesma proximidade e ética do presencial, facilitando muito minha rotina.",
+                  author: "J.S.",
+                  info: "Paciente no Exterior",
+                  initials: "JS"
+                }
+              ].map((testimonial, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-surface p-8 rounded-[32px] border border-outline-variant/30 relative shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <Quote className="absolute top-8 right-8 w-8 h-8 text-primary/5" />
+                  <p className="text-on-surface-variant italic mb-8 relative z-10">
+                    "{testimonial.text}"
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
+                      {testimonial.initials}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-on-surface">{testimonial.author}</span>
+                      <span className="text-xs text-on-surface-variant/70">{testimonial.info}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="mt-16 text-center">
+              <div className="inline-flex items-center gap-2 p-1 px-4 bg-primary/5 rounded-full text-[10px] uppercase tracking-widest font-bold text-primary border border-primary/10">
+                <Star className="w-3 h-3 fill-primary" />
+                Sigilo e Ética Profissional garantidos
+              </div>
+            </div>
           </div>
         </section>
 
