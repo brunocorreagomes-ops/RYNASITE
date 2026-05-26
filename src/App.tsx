@@ -917,7 +917,7 @@ export default function App() {
           </div>
           
           <div className="pt-8 border-t border-inverse-on-surface/10 text-center text-xs text-inverse-on-surface/40 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; {new Date().getFullYear()} Ryna Hayashi | Psicóloga Clínica. CRP 06/104087. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Ryna Hayashi | Psicóloga CRP 06/104087. Todos os direitos reservados.</p>
             <p className="uppercase tracking-[0.1em] font-medium">
               Desenvolvido por <a href="https://www.orvalia.com.br" target="_blank" rel="noopener noreferrer" className="text-turquesa hover:opacity-80 transition-opacity">Orvalia Studio</a>
             </p>
