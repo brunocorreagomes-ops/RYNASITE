@@ -924,8 +924,11 @@ export default function App() {
             </div>
           </div>
           
-          <div className="pt-8 border-t border-inverse-on-surface/10 text-center text-xs text-inverse-on-surface/40 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 Ryna Hayashi | Psicóloga CRP 06/104087. Todos os direitos reservados.</p>
+          <div className="pt-8 border-t border-inverse-on-surface/10 text-center text-xs text-inverse-on-surface/40 flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-col items-center gap-1">
+              <p>&copy; 2026 Ryna Hayashi | Psicóloga CRP 06/104087</p>
+              <p>Todos os direitos reservados.</p>
+            </div>
             <p className="uppercase tracking-[0.1em] font-medium">
               Desenvolvido por <a href="https://www.orvalia.com.br" target="_blank" rel="noopener noreferrer" className="text-turquesa hover:opacity-80 transition-opacity">Orvalia Studio</a>
             </p>
