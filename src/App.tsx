@@ -21,7 +21,7 @@ const OFFICIAL_LOGO = "https://i.ibb.co/mrnq1f85/RYNA-LOGO-FINAL-TP.png";
 const services = [
   {
     title: 'Psicoterapia Individual',
-    description: 'Focado em adultos e adolescentes, auxiliando no manejo das emoções e comportamentos para uma vida mais saudável.',
+    description: 'Focada em adultos e adolescentes, auxiliando no manejo das emoções e comportamentos para uma vida mais saudável.',
     icon: <User className="w-6 h-6" />,
   },
   {
@@ -40,6 +40,41 @@ const services = [
     icon: <Star className="w-6 h-6" />,
   },
 ];
+
+const sectionRevealVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1.0]
+    }
+  }
+};
+
+const staggerContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const staggerItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1.0]
+    }
+  }
+};
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -176,7 +211,7 @@ export default function App() {
                   <span className="text-primary italic">ser e florescer.</span>
                 </h1>
                 <p className="text-sm md:text-lg text-on-surface-variant max-w-lg mb-8 md:mb-10 leading-relaxed mx-auto lg:mx-0">
-                  Acolhimento humanizado baseado na fenomenologia. Auxilio você a encontrar equilíbrio e clareza no processo de autodescoberta e cuidado com a saúde mental.
+                  Baseada na abordagem humanista, facilito você a encontrar equilíbrio e clareza no processo de autodescoberta e cuidado com a saúde mental.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <a 
@@ -200,12 +235,12 @@ export default function App() {
                       whileTap={{ scale: 0.98 }}
                       className="w-full border border-outline px-8 py-4 rounded-full font-medium text-primary flex items-center justify-center gap-2 transition-colors"
                     >
-                      Conhecer abordagem
+                      Conhecer a abordagem
                     </motion.button>
                   </a>
                 </div>
               </motion.div>
-
+ 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -214,9 +249,9 @@ export default function App() {
               >
                 <div className="relative z-10 hero-arch aspect-[4/5] overflow-hidden border-4 md:border-8 border-surface-container shadow-2xl">
                   <img 
-                    src="https://i.ibb.co/rYdM1ZS/ryna01.png" 
+                    src="https://i.ibb.co/ZpFH9KP0/ryna002.webp" 
                     alt="Ryna Hayashi" 
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-center"
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -233,9 +268,10 @@ export default function App() {
           <div className="container mx-auto px-5 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                variants={sectionRevealVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
                 className="mb-8"
               >
                 <Quote className="w-8 h-8 md:w-12 md:h-12 text-primary/20 mx-auto mb-4 md:mb-6" />
@@ -245,71 +281,57 @@ export default function App() {
                 <div className="w-12 md:w-20 h-0.5 bg-primary/30 mx-auto" />
               </motion.div>
               
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="max-w-2xl mx-auto mt-10 md:mt-12 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl relative"
+              <motion.div 
+                variants={staggerContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="grid md:grid-cols-2 gap-6 md:gap-8 mt-10 md:mt-12 max-w-4xl mx-auto"
               >
-                <img 
-                  src="https://i.ibb.co/vCZc6ysC/ryna-ensaio-novo-10.png" 
-                  alt="Ryna Hayashi em atendimento" 
-                  className="w-full h-[350px] md:h-[500px] object-cover object-top"
-                  referrerPolicy="no-referrer"
-                />
-              </motion.div>
-              
-              <div className="grid md:grid-cols-2 gap-6 md:gap-8 mt-10 md:mt-12 max-w-4xl mx-auto">
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  variants={staggerItemVariants}
                   className="rounded-2xl md:rounded-3xl overflow-hidden shadow-lg h-64 md:h-[450px]"
                 >
                   <img 
-                    src="https://i.ibb.co/8gwCR0n7/ryna-ensaio-novo-3.png" 
+                    src="https://i.ibb.co/Rp4y28Rm/ryna003.webp" 
                     alt="Ryna Hayashi Professional" 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                    className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
                 </motion.div>
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  variants={staggerItemVariants}
                   className="rounded-2xl md:rounded-3xl overflow-hidden shadow-lg h-64 md:h-[450px]"
                 >
                   <img 
-                    src="https://i.ibb.co/pBv2HDH1/ryna-ensaio-novo-4.png" 
+                    src="https://i.ibb.co/zL6W5WG/ryna004.webp" 
                     alt="Consultório Acolhedor" 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                    className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
                 </motion.div>
-              </div>
+              </motion.div>
 
-              <div className="grid md:grid-cols-2 gap-12 text-left mt-16">
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                >
+              <motion.div 
+                variants={staggerContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="grid md:grid-cols-2 gap-12 text-left mt-16"
+              >
+                <motion.div variants={staggerItemVariants}>
                   <h3 className="text-2xl font-display mb-4 text-primary">Minha Trajetória</h3>
                   <p className="text-on-surface-variant leading-relaxed">
                     Sou Ryna Hayashi, CRP 06/104087. Psicóloga humanista formada em 2010, com uma trajetória que transita pela psicologia organizacional e hoje se dedica integralmente à clínica. Atendo em um consultório multiprofissional independente, onde a ética e o cuidado são prioridades.
                   </p>
                 </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                >
+                <motion.div variants={staggerItemVariants}>
                   <h3 className="text-2xl font-display mb-4 text-primary">Abordagem Centrada na Pessoa</h3>
                   <p className="text-on-surface-variant leading-relaxed">
-                    Minha prática é focada na Abordagem Centrada na Pessoa (ACP). Especializo-me continuamente nesta vertente para ajudar pessoas a lidarem com suas emoções e pensamentos de forma mais saudável, possibilitando a promoção do bem-estar e saúde emocional.
+                    A Abordagem Centrada na Pessoa compreende cada indivíduo como único, valorizando sua história, experiências e potencial de crescimento. O processo terapêutico acontece em um espaço de escuta, acolhimento e respeito, favorecendo o autoconhecimento, a autonomia e a construção de novos caminhos de forma autêntica.
                   </p>
                 </motion.div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -317,21 +339,30 @@ export default function App() {
         {/* Services */}
         <section id="servicos" className="py-24 bg-surface">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6">Como posso te ajudar</h2>
+            <motion.div 
+              variants={sectionRevealVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-center mb-12 md:mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6">Como posso te ajudar?</h2>
               <p className="text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto">
                 Ofereço diferentes modalidades de atendimento para atender às suas necessidades específicas em cada momento da vida.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <motion.div 
+              variants={staggerContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            >
               {services.map((service, idx) => (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
+                  variants={staggerItemVariants}
                   whileHover={{ y: -5 }}
                   className="bg-surface-container-highest p-8 rounded-3xl soft-shadow border border-outline-variant/30 group transition-all"
                 >
@@ -344,12 +375,13 @@ export default function App() {
                   </p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
             
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              variants={sectionRevealVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
               className="mt-16 bg-primary/5 rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 border border-primary/10"
             >
               <div className="flex-1 text-center lg:text-left">
@@ -371,65 +403,95 @@ export default function App() {
         {/* Testimonials Section */}
         <section id="depoimentos" className="py-24 bg-surface-container-low overflow-hidden">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 font-display">Acolhimento e Transformação</h2>
+            <motion.div 
+              variants={sectionRevealVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 font-display">Opinião de quem confia</h2>
               <p className="text-on-surface-variant max-w-2xl mx-auto">
-                Relatos anônimos de quem confiou sua jornada ao nosso espaço de cuidado.
+                Depoimentos reais de pacientes que vivenciaram o processo de cuidado e autoconhecimento.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <motion.div 
+              variants={staggerContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid md:grid-cols-3 gap-8"
+            >
               {[
                 {
-                  text: "Ryna é uma profissional de uma sensibilidade ímpar. O ambiente é seguro e me sinto genuinamente acolhida em todas as sessões.",
-                  author: "A.P.",
-                  info: "Paciente há 1 ano",
-                  initials: "AP"
+                  text: "Excelente profissional! Me senti bem desde a primeira consulta, ela traz um conforto enorme durante as sessões, um profissionalismo espetacular! Super recomendo.",
+                  author: "Laura Brienza",
+                  info: "Avaliação 5 estrelas no Google",
+                  initials: "LB"
                 },
                 {
-                  text: "Encontrei na terapia com a Ryna o espaço que precisava para florescer e compreender minhas angústias sem pressa e com muita ética.",
-                  author: "M.R.",
-                  info: "Paciente Presencial",
-                  initials: "MR"
+                  text: "Minha experiência com a Ryna foi transformadora, excelente profissional e muito responsável. Super recomendo ☺️",
+                  author: "Márcia Costa Lima",
+                  info: "Avaliação 5 estrelas no Google",
+                  initials: "ML"
                 },
                 {
-                  text: "O atendimento online superou minhas expectativas. Sinto a mesma proximidade e ética do presencial, facilitando muito minha rotina.",
-                  author: "J.S.",
-                  info: "Paciente no Exterior",
-                  initials: "JS"
+                  text: "Lugar excelente, calmo tranquilo e a Dra Ryna um doce de pessoa. Só posso agradecer por ter sido tão bem cuidada!! Obrigada por TD Dra!! 💗",
+                  author: "Vanessa Mendes Teixeira Pires",
+                  info: "Avaliação 5 estrelas no Google",
+                  initials: "VP"
                 }
               ].map((testimonial, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-surface p-8 rounded-[32px] border border-outline-variant/30 relative shadow-sm hover:shadow-md transition-shadow"
+                  variants={staggerItemVariants}
+                  className="bg-surface p-8 rounded-[32px] border border-outline-variant/30 relative shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
-                  <Quote className="absolute top-8 right-8 w-8 h-8 text-primary/5" />
-                  <p className="text-on-surface-variant italic mb-8 relative z-10">
-                    "{testimonial.text}"
-                  </p>
-                  <div className="flex items-center gap-4">
+                  <div>
+                    <Quote className="absolute top-8 right-8 w-8 h-8 text-primary/5" />
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(5)].map((_, idx) => (
+                        <Star key={idx} className="w-4 h-4 fill-amber-400 stroke-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-on-surface-variant italic mb-8 relative z-10 text-sm md:text-base leading-relaxed">
+                      "{testimonial.text}"
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-4 border-t border-outline-variant/20 pt-4">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
                       {testimonial.initials}
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-bold text-on-surface">{testimonial.author}</span>
-                      <span className="text-xs text-on-surface-variant/70">{testimonial.info}</span>
+                      <span className="font-bold text-sm text-on-surface leading-tight">{testimonial.author}</span>
+                      <span className="text-xs text-on-surface-variant/70 mt-0.5">{testimonial.info}</span>
                     </div>
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
             
-            <div className="mt-16 text-center">
-              <div className="inline-flex items-center gap-2 p-1 px-4 bg-primary/5 rounded-full text-[10px] uppercase tracking-widest font-bold text-primary border border-primary/10">
+            <motion.div 
+              variants={sectionRevealVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="mt-16 text-center flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <div className="inline-flex items-center gap-2 p-1 px-4 bg-primary/5 rounded-full text-[10px] uppercase tracking-widest font-bold text-primary border border-primary/10 h-8">
                 <Star className="w-3 h-3 fill-primary" />
                 Sigilo e Ética Profissional garantidos
               </div>
-            </div>
+              <a 
+                href="https://www.google.com/search?q=rryna+hayashi&oq=rryna+hayashi&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTILCAEQABgNGBMYgAQyBwgCEAAY7wUyBwgDEAAY7wUyBwgEEAAY7wXSAQgzNjk2ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 bg-surface hover:bg-primary/5 border border-primary/20 text-xs font-bold uppercase tracking-wider text-primary rounded-full transition-colors h-8 hover:shadow-sm"
+              >
+                Ver mais avaliações no Google <ArrowRight className="w-3 h-3" />
+              </a>
+            </motion.div>
           </div>
         </section>
 
@@ -447,7 +509,13 @@ export default function App() {
           
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-surface-container-lowest p-6 md:p-10 lg:p-20 rounded-[32px] md:rounded-[40px] shadow-xl border border-outline-variant/20 flex flex-col lg:flex-row gap-10 md:gap-12 items-center">
+              <motion.div 
+                variants={sectionRevealVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="bg-surface-container-lowest p-6 md:p-10 lg:p-20 rounded-[32px] md:rounded-[40px] shadow-xl border border-outline-variant/20 flex flex-col lg:flex-row gap-10 md:gap-12 items-center"
+              >
                 <div className="flex-1 text-center lg:text-left">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 leading-[1.1]">Inicie sua jornada hoje</h2>
                   <p className="text-on-surface-variant text-base md:text-lg mb-8 leading-relaxed">
@@ -486,14 +554,14 @@ export default function App() {
                 <div className="w-full lg:w-1/3">
                   <div className="aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden lg:rotate-3 shadow-lg hover:rotate-0 transition-transform duration-500 max-w-[300px] mx-auto lg:max-w-none">
                     <img 
-                      src="https://i.ibb.co/JjjjTc3P/ryna-ensaio-novo-7.png" 
+                      src="https://i.ibb.co/mVqL5QLg/ryna007.webp" 
                       alt="Ambiente acolhedor" 
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-center"
                       referrerPolicy="no-referrer"
                     />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -501,7 +569,13 @@ export default function App() {
         {/* Blog Section (New) */}
         <section id="blog" className="py-24 bg-surface">
           <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <motion.div 
+              variants={sectionRevealVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+            >
               <div className="max-w-2xl">
                 <h2 className="text-4xl lg:text-5xl mb-6">Reflexões e Bem-estar</h2>
                 <p className="text-on-surface-variant">
@@ -511,9 +585,15 @@ export default function App() {
               <div className="hidden md:block">
                 <span className="text-sm font-bold tracking-widest text-primary/40 uppercase">Em breve novos conteúdos</span>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-60">
+            <motion.div 
+              variants={staggerContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-60"
+            >
               {[
                 {
                   date: '12 Maio, 2024',
@@ -528,10 +608,10 @@ export default function App() {
                 {
                   date: '01 Maio, 2024',
                   title: 'A importância da pausa em um mundo acelerado',
-                  category: 'Cotovelo'
+                  category: 'Cotidiano'
                 }
               ].map((post, i) => (
-                <div key={i} className="group cursor-not-allowed">
+                <motion.div key={i} variants={staggerItemVariants} className="group cursor-not-allowed">
                   <div className="aspect-video bg-surface-container-highest rounded-2xl mb-6 overflow-hidden relative">
                      <div className="absolute inset-0 flex items-center justify-center">
                         <Star className="w-8 h-8 text-primary/10" />
@@ -542,36 +622,45 @@ export default function App() {
                     <span className="text-xs text-on-surface-variant/60">{post.date}</span>
                   </div>
                   <h3 className="text-xl font-display group-hover:text-primary transition-colors">{post.title}</h3>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="mt-16 text-center">
+            <motion.div 
+              variants={sectionRevealVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="mt-16 text-center"
+            >
               <div className="inline-block p-1 bg-surface-container rounded-full px-6 py-3 border border-outline-variant/30 text-sm italic text-on-surface-variant">
                 Blog em construção. Siga no Instagram para pílulas de conteúdo diário.
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* FAQ / Direct Contact */}
         <section id="contato" className="py-24 bg-surface-container-highest">
           <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-20">
-              <div>
+            <motion.div 
+              variants={staggerContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid lg:grid-cols-2 gap-20"
+            >
+              <motion.div variants={staggerItemVariants}>
                 <h2 className="text-4xl lg:text-5xl mb-8">Dúvidas Frequentes</h2>
                 <div className="space-y-6">
                   {[
-                    { q: 'Como funcionam as sessões?', a: 'As sessões têm duração média de 40 minutos a 1 hora. Atendo adultos e adolescentes em consultório físico em Indaiatuba ou de forma online para todo o mundo.' },
-                    { q: 'Quais os horários e urgências?', a: 'Os atendimentos ocorrem em dias úteis. No momento, não realizamos sessões aos finais de semana ou atendimentos de urgência.' },
+                    { q: 'Como funcionam as sessões?', a: 'Sessões de 50 minutos. Atendo pessoas adultas em consultório físico.' },
+                    { q: 'Horários de atendimento', a: 'Somente dias úteis' },
                     { q: 'Quais as formas de pagamento?', a: 'O pagamento é realizado via Pix ou transferência bancária. Fornecemos recibos para processos de reembolso junto ao seu convênio.' },
                   ].map((faq, i) => (
                     <motion.div 
                       key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
+                      variants={staggerItemVariants}
                       className="border-b border-outline-variant pb-6"
                     >
                       <h4 className="text-xl font-display mb-2 text-primary">{faq.q}</h4>
@@ -579,13 +668,16 @@ export default function App() {
                     </motion.div>
                   ))}
                 </div>
-              </div>
-
-              <div className="bg-primary/5 p-6 md:p-8 lg:p-16 rounded-[32px] md:rounded-[40px] border border-primary/10 shadow-xl flex flex-col items-center text-center gap-8 md:gap-10">
+              </motion.div>
+ 
+              <motion.div 
+                variants={staggerItemVariants}
+                className="bg-primary/5 p-6 md:p-8 lg:p-16 rounded-[32px] md:rounded-[40px] border border-primary/10 shadow-xl flex flex-col items-center text-center gap-8 md:gap-10"
+              >
                 <div className="max-w-md">
-                  <h3 className="text-3xl md:text-4xl font-display mb-6">Vamos conversar?</h3>
+                   <h3 className="text-3xl md:text-4xl font-display mb-6">Vamos conversar?</h3>
                   <p className="text-on-surface-variant text-base md:text-lg leading-relaxed mb-8">
-                    Clique no botão abaixo para iniciarmos seu atendimento pelo WhatsApp de forma direta e acolhedora.
+                     Clique no botão abaixo para iniciarmos seu atendimento pelo WhatsApp de forma direta e acolhedora.
                   </p>
                   
                   <a 
@@ -642,8 +734,8 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
       </main>
@@ -656,7 +748,7 @@ export default function App() {
               <div className="mb-8">
                 <div className="flex flex-col">
                   <span className="font-display text-4xl font-bold text-inverse-on-surface">Ryna Hayashi</span>
-                  <span className="text-sm uppercase tracking-[0.3em] text-primary-fixed mt-1 font-medium">Psicóloga Clinica</span>
+                  <span className="text-sm uppercase tracking-[0.3em] text-primary-fixed mt-1 font-medium">Psicóloga — CRP 06/104087</span>
                 </div>
               </div>
               <p className="text-inverse-on-surface/50 max-w-sm mb-10 leading-relaxed italic text-lg font-display">
