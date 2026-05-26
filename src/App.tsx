@@ -417,8 +417,10 @@ export default function App() {
                   <motion.div
                     key={service.title}
                     variants={staggerItemVariants}
-                    whileHover={{ y: -8 }}
-                    className="relative bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/30 hover:border-primary/25 hover:shadow-xl hover:shadow-primary/5 group transition-all duration-500 flex flex-col justify-between h-full min-h-[320px] text-center items-center"
+                    whileHover={{ y: -8, scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="relative bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/30 hover:border-primary/25 hover:shadow-xl hover:shadow-primary/5 group transition-all duration-500 flex flex-col justify-between h-full min-h-[320px] text-center items-center cursor-pointer select-none"
                   >
                     {/* Background Soft Glow */}
                     <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -840,12 +842,14 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 h-48 md:h-64 w-full border border-outline-variant/30">
-                  <img 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8JwvbSVGQdyePW3Wf3sVSS83zCwlMqynisRPltyi9qRXOHFdjs-p-OZojO7e2J_WISAnQepRGuhuwEmtvajqv2z-8PT_CIg0OyvCj9GYmna4ABcrIrFmB-n00nJKHzeg05E_0sGs-ufG9wReyjaVNT12pSW928b5Q4TiEpfCOY6eOetICJxLfgYIu-w2u_QSYTna03CtTxkMnIcqBR2l6luepKTzi3fBu58-ZoGtHOkfsfkGPriXuQeT7fgaeBp7Pl4HJn3C6PMQ" 
-                    alt="Mapa de localização" 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
+                <div className="rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 h-64 md:h-80 w-full border border-outline-variant/30 shadow-inner relative">
+                  <iframe 
+                    title="Mapa de localização do Consultório de Ryna Hayashi"
+                    src="https://maps.google.com/maps?q=Rua%20Almirante%20Tamandar%C3%A9,%2054%20-%20Cidade%20Nova%20II,%20Indaiatuba%20-%20SP,%2013334-200&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                    className="w-full h-full border-0"
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
               </motion.div>
@@ -899,7 +903,14 @@ export default function App() {
                 </li>
                 <li className="flex items-center gap-3 group">
                   <Phone className="w-5 h-5 flex-shrink-0 text-primary-fixed/40 group-hover:text-primary transition-colors" />
-                  <span className="font-medium">+55 (19) 98957-8237</span>
+                  <a 
+                    href="https://wa.me/5519989578237?text=Olá%20Ryna,%20gostaria%20de%20agendar%20uma%20consulta." 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="font-medium hover:text-primary transition-colors cursor-pointer"
+                  >
+                    +55 (19) 98957-8237
+                  </a>
                 </li>
               </ul>
             </div>
