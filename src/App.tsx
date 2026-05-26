@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, Heart, Brain, Calendar, MapPin, Phone, Instagram, Linkedin, 
   ChevronRight, MessageCircle, Star, Quote, ArrowRight, User, Music2,
-  ArrowUp
+  ArrowUp, ChevronDown
 } from 'lucide-react';
 
 const navLinks = [
@@ -22,22 +22,26 @@ const services = [
   {
     title: 'Psicoterapia Individual',
     description: 'Focada em adultos e adolescentes, auxiliando no manejo das emoções e comportamentos para uma vida mais saudável.',
-    icon: <User className="w-6 h-6" />,
+    Icon: User,
+    number: '01',
   },
   {
     title: 'Adolescência',
     description: 'Um espaço de escuta e acolhimento para jovens lidarem com as descobertas e pressões dessa fase.',
-    icon: <Heart className="w-6 h-6" />,
+    Icon: Heart,
+    number: '02',
   },
   {
     title: 'Recursos Humanos',
     description: 'Suporte organizacional e consultoria, integrando minha experiência anterior em psicologia das organizações.',
-    icon: <Brain className="w-6 h-6" />,
+    Icon: Brain,
+    number: '03',
   },
   {
     title: 'Saúde Emocional',
     description: 'Promoção do bem-estar e restabelecimento da saúde mental através da (re)descoberta de si mesmo.',
-    icon: <Star className="w-6 h-6" />,
+    Icon: Star,
+    number: '04',
   },
 ];
 
@@ -79,6 +83,7 @@ const staggerItemVariants = {
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,6 +95,53 @@ export default function App() {
 
   return (
     <div className="min-h-screen selection:bg-primary/20">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Ryna Hayashi | Psicóloga Clínica",
+            "description": "Psicóloga clínica que atua na Abordagem Centrada na Pessoa. Oferece psicoterapia presencial em Indaiatuba e atendimento online.",
+            "image": [
+              "https://i.ibb.co/ZpFH9KP0/ryna002.webp",
+              "https://i.ibb.co/mrnq1f85/RYNA-LOGO-FINAL-TP.png"
+            ],
+            "logo": "https://i.ibb.co/mrnq1f85/RYNA-LOGO-FINAL-TP.png",
+            "telephone": "+5519989578237",
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "R. Alm. Tamandaré, 54, Cidade Nova II",
+              "addressLocality": "Indaiatuba",
+              "addressRegion": "SP",
+              "postalCode": "13334-200",
+              "addressCountry": "BR"
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "08:00",
+                "closes": "18:00"
+              }
+            ],
+            "sameAs": [
+              "https://www.instagram.com/psi.rynahayashi",
+              "https://www.tiktok.com/@rynahayashi.psi",
+              "https://www.linkedin.com/in/ryna-mie-hayashi-wolf-76b15b2a"
+            ]
+          })
+        }}
+      />
+
       {/* Navigation */}
       <nav 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -200,20 +252,20 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-center lg:text-left order-2 lg:order-1"
+                className="text-center lg:text-center order-2 lg:order-1 flex flex-col items-center justify-center w-full"
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-primary-container text-[10px] md:text-xs font-semibold tracking-wider uppercase mb-6 mx-auto lg:mx-0">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-primary-container text-[10px] md:text-xs font-semibold tracking-wider uppercase mb-6 mx-auto">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   Atendimento Presencial e Online
                 </div>
-                <h1 className="text-3xl md:text-6xl lg:text-7xl font-display font-medium text-on-surface leading-[1.1] mb-6 md:mb-8">
+                <h1 className="text-3xl md:text-6xl lg:text-7xl font-display font-medium text-on-surface leading-[1.1] mb-6 md:mb-8 text-center">
                   Um espaço para <br />
                   <span className="text-primary italic">ser e florescer.</span>
                 </h1>
-                <p className="text-sm md:text-lg text-on-surface-variant max-w-lg mb-8 md:mb-10 leading-relaxed mx-auto lg:mx-0">
+                <p className="text-sm md:text-lg text-on-surface-variant max-w-lg mb-8 md:mb-10 leading-relaxed mx-auto text-center">
                   Baseada na abordagem humanista, facilito você a encontrar equilíbrio e clareza no processo de autodescoberta e cuidado com a saúde mental.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a 
                     href="https://wa.me/5519989578237?text=Olá%20Ryna,%20gostaria%20de%20agendar%20uma%20consulta."
                     target="_blank"
@@ -317,17 +369,17 @@ export default function App() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="grid md:grid-cols-2 gap-12 text-left mt-16"
+                className="grid md:grid-cols-2 gap-12 text-center mt-16"
               >
-                <motion.div variants={staggerItemVariants}>
-                  <h3 className="text-2xl font-display mb-4 text-primary">Minha Trajetória</h3>
-                  <p className="text-on-surface-variant leading-relaxed">
+                <motion.div variants={staggerItemVariants} className="flex flex-col items-center text-center">
+                  <h3 className="text-2xl font-display mb-4 text-primary text-center">Minha Trajetória</h3>
+                  <p className="text-on-surface-variant leading-relaxed text-center">
                     Sou Ryna Hayashi, CRP 06/104087. Psicóloga humanista formada em 2010, com uma trajetória que transita pela psicologia organizacional e hoje se dedica integralmente à clínica. Atendo em um consultório multiprofissional independente, onde a ética e o cuidado são prioridades.
                   </p>
                 </motion.div>
-                <motion.div variants={staggerItemVariants}>
-                  <h3 className="text-2xl font-display mb-4 text-primary">Abordagem Centrada na Pessoa</h3>
-                  <p className="text-on-surface-variant leading-relaxed">
+                <motion.div variants={staggerItemVariants} className="flex flex-col items-center text-center">
+                  <h3 className="text-2xl font-display mb-4 text-primary text-center">Abordagem Centrada na Pessoa</h3>
+                  <p className="text-on-surface-variant leading-relaxed text-center">
                     A Abordagem Centrada na Pessoa compreende cada indivíduo como único, valorizando sua história, experiências e potencial de crescimento. O processo terapêutico acontece em um espaço de escuta, acolhimento e respeito, favorecendo o autoconhecimento, a autonomia e a construção de novos caminhos de forma autêntica.
                   </p>
                 </motion.div>
@@ -359,22 +411,47 @@ export default function App() {
               viewport={{ once: true, margin: "-100px" }}
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
-              {services.map((service, idx) => (
-                <motion.div
-                  key={service.title}
-                  variants={staggerItemVariants}
-                  whileHover={{ y: -5 }}
-                  className="bg-surface-container-highest p-8 rounded-3xl soft-shadow border border-outline-variant/30 group transition-all"
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-display mb-4">{service.title}</h3>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">
-                    {service.description}
-                  </p>
-                </motion.div>
-              ))}
+              {services.map((service, idx) => {
+                const IconComponent = service.Icon;
+                return (
+                  <motion.div
+                    key={service.title}
+                    variants={staggerItemVariants}
+                    whileHover={{ y: -8 }}
+                    className="relative bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/30 hover:border-primary/25 hover:shadow-xl hover:shadow-primary/5 group transition-all duration-500 flex flex-col justify-between h-full min-h-[320px] text-center items-center"
+                  >
+                    {/* Background Soft Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div className="relative z-10 w-full flex flex-col items-center">
+                      {/* Top Row: Icon + Number */}
+                      <div className="flex justify-between items-start w-full mb-8">
+                        {/* Modern dual-layer Icon Container */}
+                        <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary/5 to-primary/12 border border-primary/10 flex items-center justify-center text-primary transition-all duration-500 group-hover:from-primary group-hover:to-primary-container group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_8px_20px_-4px_rgba(96,108,56,0.3)]">
+                          {/* Inner decorative subtle ring */}
+                          <div className="absolute inset-1 border border-dashed border-primary/20 rounded-xl group-hover:border-white/20 group-hover:scale-95 transition-all duration-500" />
+                          <IconComponent className="w-6 h-6 stroke-[1.5] transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110" />
+                        </div>
+                        
+                        {/* Elegant luxury number marker */}
+                        <span className="font-display text-4xl italic text-primary/10 group-hover:text-primary/20 transition-colors duration-500 select-none">
+                          {service.number}
+                        </span>
+                      </div>
+
+                      {/* Title & Desc */}
+                      <h3 className="text-xl md:text-2xl font-display text-on-surface mb-3 group-hover:text-primary transition-colors duration-300 text-center">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-on-surface-variant leading-relaxed font-sans mb-6 text-center">
+                        {service.description}
+                      </p>
+                    </div>
+
+
+                  </motion.div>
+                );
+              })}
             </motion.div>
             
             <motion.div 
@@ -382,17 +459,17 @@ export default function App() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="mt-16 bg-primary/5 rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 border border-primary/10"
+              className="mt-16 bg-primary/5 rounded-3xl p-8 lg:p-12 flex flex-col items-center justify-center text-center gap-8 border border-primary/10 w-full"
             >
-              <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-2xl font-display mb-2">Atendimento Online para brasileiros no exterior</h3>
-                <p className="text-on-surface-variant">Mantendo a conexão com suas raízes e cultura, onde quer que você esteja.</p>
+              <div className="flex-1 text-center flex flex-col items-center">
+                <h3 className="text-2xl font-display mb-2 text-center">Atendimento Online para brasileiros no exterior</h3>
+                <p className="text-on-surface-variant text-center">Mantendo a conexão com suas raízes e cultura, onde quer que você esteja.</p>
               </div>
               <a 
                 href="https://wa.me/5519989578237?text=Olá%20Ryna,%20gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20online."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary font-bold hover:underline group uppercase tracking-widest text-xs"
+                className="flex items-center justify-center gap-2 text-primary font-bold hover:underline group uppercase tracking-widest text-xs"
               >
                 Saiba como funciona <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -514,21 +591,21 @@ export default function App() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="bg-surface-container-lowest p-6 md:p-10 lg:p-20 rounded-[32px] md:rounded-[40px] shadow-xl border border-outline-variant/20 flex flex-col lg:flex-row gap-10 md:gap-12 items-center"
+                className="bg-surface-container-lowest p-6 md:p-10 lg:p-20 rounded-[32px] md:rounded-[40px] shadow-xl border border-outline-variant/20 flex flex-col lg:flex-col gap-10 md:gap-12 items-center"
               >
-                <div className="flex-1 text-center lg:text-left">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 leading-[1.1]">Inicie sua jornada hoje</h2>
-                  <p className="text-on-surface-variant text-base md:text-lg mb-8 leading-relaxed">
+                <div className="flex-1 text-center lg:text-center flex flex-col items-center justify-center w-full">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 leading-[1.1] text-center">Inicie sua jornada hoje</h2>
+                  <p className="text-on-surface-variant text-base md:text-lg mb-8 leading-relaxed text-center max-w-2xl">
                     O primeiro passo é sempre o mais corajoso. Estou aqui para te ouvir sem julgamentos, em um ambiente de total confidencialidade e acolhimento.
                   </p>
-                  <div className="space-y-4 mb-8 text-left inline-block md:block">
-                    <div className="flex items-center gap-3 text-on-surface-variant text-sm md:text-base">
+                  <div className="space-y-4 mb-8 text-center flex flex-col items-center justify-center">
+                    <div className="flex items-center justify-center gap-3 text-on-surface-variant text-sm md:text-base text-center">
                       <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary flex-shrink-0">
                         <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4" />
                       </div>
                       <span>Cidade Nova II, Indaiatuba - SP / Atendimento Online</span>
                     </div>
-                    <div className="flex items-center gap-3 text-on-surface-variant text-sm md:text-base">
+                    <div className="flex items-center justify-center gap-3 text-on-surface-variant text-sm md:text-base text-center">
                       <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary flex-shrink-0">
                         <MessageCircle className="w-3.5 h-3.5 md:w-4 md:h-4" />
                       </div>
@@ -539,7 +616,7 @@ export default function App() {
                     href="https://wa.me/5519989578237?text=Olá%20Ryna,%20gostaria%20de%20agendar%20uma%20consulta."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block"
+                    className="block shadow-lg rounded-full"
                   >
                     <motion.button
                       whileHover={{ scale: 1.02 }}
@@ -574,15 +651,15 @@ export default function App() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+              className="flex flex-col items-center justify-center text-center mb-12 gap-6 w-full"
             >
-              <div className="max-w-2xl">
-                <h2 className="text-4xl lg:text-5xl mb-6">Reflexões e Bem-estar</h2>
-                <p className="text-on-surface-variant">
+              <div className="max-w-2xl mx-auto flex flex-col items-center justify-center text-center">
+                <h2 className="text-4xl lg:text-5xl mb-6 text-center">Reflexões e Bem-estar</h2>
+                <p className="text-on-surface-variant text-center max-w-xl">
                   Artigos sobre saúde mental, autoconhecimento e o cotidiano sob a perspectiva fenomenológica.
                 </p>
               </div>
-              <div className="hidden md:block">
+              <div className="hidden lg:block text-center">
                 <span className="text-sm font-bold tracking-widest text-primary/40 uppercase">Em breve novos conteúdos</span>
               </div>
             </motion.div>
@@ -611,17 +688,17 @@ export default function App() {
                   category: 'Cotidiano'
                 }
               ].map((post, i) => (
-                <motion.div key={i} variants={staggerItemVariants} className="group cursor-not-allowed">
-                  <div className="aspect-video bg-surface-container-highest rounded-2xl mb-6 overflow-hidden relative">
+                <motion.div key={i} variants={staggerItemVariants} className="group cursor-not-allowed flex flex-col items-center text-center">
+                  <div className="aspect-video w-full bg-surface-container-highest rounded-2xl mb-6 overflow-hidden relative">
                      <div className="absolute inset-0 flex items-center justify-center">
                         <Star className="w-8 h-8 text-primary/10" />
                      </div>
                   </div>
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center justify-center gap-3 mb-3">
                     <span className="text-xs font-bold text-primary uppercase tracking-tighter bg-primary/10 px-2 py-1 rounded">{post.category}</span>
                     <span className="text-xs text-on-surface-variant/60">{post.date}</span>
                   </div>
-                  <h3 className="text-xl font-display group-hover:text-primary transition-colors">{post.title}</h3>
+                  <h3 className="text-xl font-display group-hover:text-primary transition-colors text-center">{post.title}</h3>
                 </motion.div>
               ))}
             </motion.div>
@@ -650,23 +727,60 @@ export default function App() {
               viewport={{ once: true, margin: "-100px" }}
               className="grid lg:grid-cols-2 gap-20"
             >
-              <motion.div variants={staggerItemVariants}>
-                <h2 className="text-4xl lg:text-5xl mb-8">Dúvidas Frequentes</h2>
-                <div className="space-y-6">
+              <motion.div variants={staggerItemVariants} className="flex flex-col">
+                <h2 className="text-4xl lg:text-5xl mb-8 lg:text-center text-center">Dúvidas Frequentes</h2>
+                <div className="space-y-2 bg-surface-container-lowest/50 p-6 rounded-3xl border border-outline-variant/20 shadow-sm">
                   {[
-                    { q: 'Como funcionam as sessões?', a: 'Sessões de 50 minutos. Atendo pessoas adultas em consultório físico.' },
-                    { q: 'Horários de atendimento', a: 'Somente dias úteis' },
-                    { q: 'Quais as formas de pagamento?', a: 'O pagamento é realizado via Pix ou transferência bancária. Fornecemos recibos para processos de reembolso junto ao seu convênio.' },
-                  ].map((faq, i) => (
-                    <motion.div 
-                      key={i}
-                      variants={staggerItemVariants}
-                      className="border-b border-outline-variant pb-6"
-                    >
-                      <h4 className="text-xl font-display mb-2 text-primary">{faq.q}</h4>
-                      <p className="text-on-surface-variant">{faq.a}</p>
-                    </motion.div>
-                  ))}
+                    { q: 'Como funcionam as sessões?', a: 'As sessões têm duração de 50 minutos e ocorrem de forma semanal ou quinzenal, dependendo da necessidade de cada paciente. O atendimento é estruturado para oferecer um espaço seguro de escuta e acolhimento.' },
+                    { q: 'Qual o horário de atendimento?', a: 'Os atendimentos são realizados de segunda a sexta-feira, em horários flexíveis sob agendamento prévio, garantindo flexibilidade para sua rotina.' },
+                    { q: 'Quais as formas de pagamento?', a: 'O pagamento pode ser feito via Pix ou transferência bancária de forma mensal ou por sessão. Disponibilizamos recibos completos para que você possa solicitar reembolso junto ao seu plano de saúde.' },
+                    { q: 'Atende convênios médicos?', a: 'Trabalho exclusivamente na modalidade particular, porém forneço recibos com todas as informações obrigatórias (como CRP e dados do atendimento) para você solicitar o reembolso parcial ou integral diretamente com seu convênio/plano de saúde.' },
+                    { q: 'Como funciona a primeira sessão?', a: 'A primeira sessão é um momento de acolhimento e aproximação, onde você poderá compartilhar suas queixas iniciais, dúvidas e objetivos com a terapia, além de conhecer meu estilo de trabalho.' }
+                  ].map((faq, i) => {
+                    const isOpen = openFaqIndex === i;
+                    return (
+                      <motion.div 
+                        key={i}
+                        variants={staggerItemVariants}
+                        className="border-b border-outline-variant/30 last:border-0 pb-2 pt-1"
+                      >
+                        <button
+                          onClick={() => setOpenFaqIndex(isOpen ? null : i)}
+                          className="w-full text-left py-4 flex justify-between items-center gap-4 group focus:outline-none cursor-pointer"
+                          aria-expanded={isOpen}
+                        >
+                          <span className="text-lg md:text-xl font-display text-primary font-medium transition-colors duration-300 group-hover:text-primary-container">
+                            {faq.q}
+                          </span>
+                          <motion.span
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
+                            className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/5 group-hover:bg-primary/10 flex items-center justify-center text-primary transition-colors"
+                          >
+                            <ChevronDown className="w-5 h-5" />
+                          </motion.span>
+                        </button>
+                        
+                        <motion.div
+                          initial={false}
+                          animate={{ 
+                            height: isOpen ? "auto" : 0,
+                            opacity: isOpen ? 1 : 0,
+                            marginTop: isOpen ? 4 : 0
+                          }}
+                          transition={{ 
+                            height: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1.0] },
+                            opacity: { duration: 0.25, ease: "linear" }
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-on-surface-variant text-sm md:text-base leading-relaxed pb-4 pr-6">
+                            {faq.a}
+                          </p>
+                        </motion.div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </motion.div>
  
