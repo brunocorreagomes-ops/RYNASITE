@@ -154,13 +154,21 @@ export default function App() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-4"
           >
-            <a href="#home" className="block">
+            <a href="#home" className="flex items-center gap-3 md:gap-4 select-none group">
               <img 
                 src={OFFICIAL_LOGO} 
                 alt="Ryna Hayashi Logo" 
-                className="h-12 md:h-16 w-auto object-contain"
+                className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
+              <div className="flex flex-col border-l border-outline-variant/60 pl-3 md:pl-4">
+                <span className="font-display text-base md:text-lg font-bold text-on-surface leading-tight transition-colors duration-300 group-hover:text-primary whitespace-nowrap">
+                  Ryna Hayashi
+                </span>
+                <span className="text-[10px] md:text-xs text-on-surface-variant/80 font-medium tracking-wide whitespace-nowrap">
+                  Psicóloga CRP 06/104087
+                </span>
+              </div>
             </a>
           </motion.div>
 
