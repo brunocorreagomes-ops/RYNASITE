@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { 
   Menu, X, Heart, Brain, Calendar, MapPin, Phone, Instagram, Linkedin, 
   ChevronRight, MessageCircle, Star, Quote, ArrowRight, User, Music2,
-  ArrowUp, ChevronDown
+  ArrowUp, ChevronDown, Sparkles
 } from 'lucide-react';
 
 const navLinks = [
@@ -714,7 +714,7 @@ export default function App() {
               <div className="max-w-2xl mx-auto flex flex-col items-center justify-center text-center">
                 <h2 className="text-4xl lg:text-5xl mb-6 text-center">Reflexões e Bem-estar</h2>
                 <p className="text-on-surface-variant text-center max-w-xl">
-                  Artigos sobre saúde mental, autoconhecimento e o cotidiano sob a perspectiva fenomenológica.
+                  Artigos sobre saúde mental, autoconhecimento e o cotidiano.
                 </p>
               </div>
               <div className="hidden lg:block text-center">
@@ -727,50 +727,25 @@ export default function App() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-60"
+              className="flex flex-col items-center justify-center py-16 px-6 bg-surface-container-low border border-outline-variant/30 rounded-[2.5rem] max-w-2xl mx-auto shadow-sm text-center"
             >
-              {[
-                {
-                  date: '12 Maio, 2024',
-                  title: 'O que é a fenomenologia na prática clínica?',
-                  category: 'Abordagem'
-                },
-                {
-                  date: '08 Maio, 2024',
-                  title: 'Ansiedade: Como o corpo fala o que a mente cala',
-                  category: 'Saúde Mental'
-                },
-                {
-                  date: '01 Maio, 2024',
-                  title: 'A importância da pausa em um mundo acelerado',
-                  category: 'Cotidiano'
-                }
-              ].map((post, i) => (
-                <motion.div key={i} variants={staggerItemVariants} className="group cursor-not-allowed flex flex-col items-center text-center">
-                  <div className="aspect-video w-full bg-surface-container-highest rounded-2xl mb-6 overflow-hidden relative">
-                     <div className="absolute inset-0 flex items-center justify-center">
-                        <Star className="w-8 h-8 text-primary/10" />
-                     </div>
-                  </div>
-                  <div className="flex items-center justify-center gap-3 mb-3">
-                    <span className="text-xs font-bold text-primary uppercase tracking-tighter bg-primary/10 px-2 py-1 rounded">{post.category}</span>
-                    <span className="text-xs text-on-surface-variant/60">{post.date}</span>
-                  </div>
-                  <h3 className="text-xl font-display group-hover:text-primary transition-colors text-center">{post.title}</h3>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <motion.div 
-              variants={sectionRevealVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="mt-16 text-center"
-            >
-              <div className="inline-block p-1 bg-surface-container rounded-full px-6 py-3 border border-outline-variant/30 text-sm italic text-on-surface-variant">
-                Blog em construção. Siga no Instagram para pílulas de conteúdo diário.
-              </div>
+              <motion.div variants={staggerItemVariants} className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 animate-pulse">
+                <Sparkles className="w-7 h-7" />
+              </motion.div>
+              <motion.h3 variants={staggerItemVariants} className="text-2xl md:text-3xl font-display font-medium text-on-surface mb-6 text-center">
+                Novos artigos em breve
+              </motion.h3>
+              <motion.div variants={staggerItemVariants}>
+                <a 
+                  href="https://www.instagram.com/psi.rynahayashi" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold uppercase tracking-widest text-primary border-b border-primary/30 pb-1 hover:text-primary-container hover:border-primary-container transition-colors duration-300"
+                >
+                  <Instagram className="w-4 h-4 md:w-5 md:h-5 hover:scale-110 transition-transform" />
+                  Acompanhe novidades no Instagram
+                </a>
+              </motion.div>
             </motion.div>
           </div>
         </section>
