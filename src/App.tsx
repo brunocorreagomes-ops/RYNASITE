@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { 
   Menu, X, Heart, Brain, Calendar, MapPin, Phone, Instagram, Linkedin, 
@@ -100,6 +100,26 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const element = document.getElementById(targetId);
+      if (element) {
+        const offset = 88; // Height of the sticky navigation header
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen selection:bg-primary/20">
       {/* Scroll Progress Bar */}
@@ -167,7 +187,7 @@ export default function App() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-4"
           >
-            <a href="#home" className="flex items-center gap-3 md:gap-4 select-none group">
+            <a href="#home" onClick={(e) => handleScrollTo(e, '#home')} className="flex items-center gap-3 md:gap-4 select-none group">
               <img 
                 src={OFFICIAL_LOGO} 
                 alt="Ryna Hayashi Logo" 
@@ -191,6 +211,7 @@ export default function App() {
               <motion.a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
@@ -242,7 +263,10 @@ export default function App() {
                   <a
                     key={link.name}
                     href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      setMobileMenuOpen(false);
+                      handleScrollTo(e, link.href);
+                    }}
                     className="text-lg font-display text-on-surface-variant hover:text-primary"
                   >
                     {link.name}
@@ -270,23 +294,35 @@ export default function App() {
           <div className="container mx-auto px-5 md:px-6">
             <div className="flex flex-col lg:grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                variants={staggerContainerVariants}
+                initial="hidden"
+                animate="visible"
                 className="text-center lg:text-center order-2 lg:order-1 flex flex-col items-center justify-center w-full"
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-primary-container text-[10px] md:text-xs font-semibold tracking-wider uppercase mb-6 mx-auto">
+                <motion.div 
+                  variants={staggerItemVariants}
+                  className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-primary-container text-[10px] md:text-xs font-semibold tracking-wider uppercase mb-6 mx-auto"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   Atendimento Presencial e Online
-                </div>
-                <h1 className="text-3xl md:text-6xl lg:text-7xl font-display font-medium text-on-surface leading-[1.1] mb-6 md:mb-8 text-center">
+                </motion.div>
+                <motion.h1 
+                  variants={staggerItemVariants}
+                  className="text-3xl md:text-6xl lg:text-7xl font-display font-medium text-on-surface leading-[1.1] mb-6 md:mb-8 text-center"
+                >
                   Um espaço para <br />
                   <span className="text-primary italic">ser e florescer.</span>
-                </h1>
-                <p className="text-sm md:text-lg text-on-surface-variant max-w-lg mb-8 md:mb-10 leading-relaxed mx-auto text-center">
+                </motion.h1>
+                <motion.p 
+                  variants={staggerItemVariants}
+                  className="text-sm md:text-lg text-on-surface-variant max-w-lg mb-8 md:mb-10 leading-relaxed mx-auto text-center"
+                >
                   Baseada na abordagem humanista, facilito você a encontrar equilíbrio e clareza no processo de autodescoberta e cuidado com a saúde mental.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                </motion.p>
+                <motion.div 
+                  variants={staggerItemVariants}
+                  className="flex flex-col sm:flex-row gap-4 justify-center"
+                >
                   <a 
                     href="https://wa.me/5519989578237?text=Olá%20Ryna,%20gostaria%20de%20agendar%20uma%20consulta."
                     target="_blank"
@@ -302,7 +338,7 @@ export default function App() {
                       <ChevronRight className="w-5 h-5" />
                     </motion.button>
                   </a>
-                  <a href="#abordagem">
+                  <a href="#abordagem" onClick={(e) => handleScrollTo(e, '#abordagem')}>
                     <motion.button
                       whileHover={{ scale: 1.02, backgroundColor: 'rgba(72, 84, 34, 0.05)' }}
                       whileTap={{ scale: 0.98 }}
@@ -311,7 +347,7 @@ export default function App() {
                       Conhecer a abordagem
                     </motion.button>
                   </a>
-                </div>
+                </motion.div>
               </motion.div>
  
               <motion.div
@@ -909,7 +945,15 @@ export default function App() {
               <h4 className="text-xs uppercase tracking-[0.2em] font-bold mb-8 text-primary-fixed/80">Links rápidos</h4>
               <ul className="space-y-4 text-inverse-on-surface/60">
                 {navLinks.map(link => (
-                  <li key={link.name}><a href={link.href} className="hover:text-primary transition-colors duration-300 block w-fit">{link.name}</a></li>
+                  <li key={link.name}>
+                    <a 
+                      href={link.href} 
+                      onClick={(e) => handleScrollTo(e, link.href)} 
+                      className="hover:text-primary transition-colors duration-300 block w-fit"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
