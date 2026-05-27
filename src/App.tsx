@@ -63,19 +63,19 @@ const staggerContainerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.1
+      delayChildren: 0.05
     }
   }
 };
 
 const staggerItemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 35 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1.0]
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1]
     }
   }
 };
@@ -440,8 +440,7 @@ export default function App() {
                     variants={staggerItemVariants}
                     whileHover={{ y: -8, scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/30 hover:border-primary/25 hover:shadow-xl hover:shadow-primary/5 group transition-all duration-500 flex flex-col justify-between h-full min-h-[320px] text-center items-center cursor-pointer select-none"
+                    className="relative bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/30 hover:border-primary/25 hover:shadow-xl hover:shadow-primary/5 group flex flex-col justify-between h-full min-h-[320px] text-center items-center cursor-pointer select-none transition-shadow transition-colors duration-300"
                   >
                     {/* Background Soft Glow */}
                     <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
