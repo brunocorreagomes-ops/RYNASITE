@@ -16,7 +16,7 @@ const navLinks = [
   { name: 'Contato', href: '#contato' },
 ];
 
-const OFFICIAL_LOGO = "https://i.ibb.co/mrnq1f85/RYNA-LOGO-FINAL-TP.png";
+const OFFICIAL_LOGO = "/logoryna.png";
 
 const services = [
   {
@@ -139,9 +139,9 @@ export default function App() {
             "description": "Psicóloga clínica que atua na Abordagem Centrada na Pessoa. Oferece psicoterapia presencial em Indaiatuba e atendimento online.",
             "image": [
               "https://i.ibb.co/ZpFH9KP0/ryna002.webp",
-              "https://i.ibb.co/mrnq1f85/RYNA-LOGO-FINAL-TP.png"
+              "https://rynahayashi.com.br/logoryna.png"
             ],
-            "logo": "https://i.ibb.co/mrnq1f85/RYNA-LOGO-FINAL-TP.png",
+            "logo": "https://rynahayashi.com.br/logoryna.png",
             "telephone": "+5519989578237",
             "priceRange": "$$",
             "address": {
