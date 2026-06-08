@@ -138,7 +138,7 @@ export default function App() {
             "name": "Ryna Hayashi | Psicóloga Clínica",
             "description": "Psicóloga clínica que atua na Abordagem Centrada na Pessoa. Oferece psicoterapia presencial em Indaiatuba e atendimento online.",
             "image": [
-              "https://i.ibb.co/ZpFH9KP0/ryna002.webp",
+              "https://rynahayashi.com.br/ryna002.webp",
               "https://rynahayashi.com.br/logoryna.png"
             ],
             "logo": "https://rynahayashi.com.br/logoryna.png",
@@ -358,7 +358,7 @@ export default function App() {
               >
                 <div className="relative z-10 hero-arch aspect-[4/5] overflow-hidden border-4 md:border-8 border-surface-container shadow-2xl">
                   <img 
-                    src="https://i.ibb.co/ZpFH9KP0/ryna002.webp" 
+                    src="/ryna002.webp" 
                     alt="Ryna Hayashi" 
                     className="w-full h-full object-cover object-center"
                     referrerPolicy="no-referrer"
@@ -402,7 +402,7 @@ export default function App() {
                   className="rounded-2xl md:rounded-3xl overflow-hidden shadow-lg h-64 md:h-[450px]"
                 >
                   <img 
-                    src="https://i.ibb.co/Rp4y28Rm/ryna003.webp" 
+                    src="/ryna003.webp" 
                     alt="Ryna Hayashi Professional" 
                     className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     referrerPolicy="no-referrer"
@@ -413,7 +413,7 @@ export default function App() {
                   className="rounded-2xl md:rounded-3xl overflow-hidden shadow-lg h-64 md:h-[450px]"
                 >
                   <img 
-                    src="https://i.ibb.co/zL6W5WG/ryna004.webp" 
+                    src="/ryna004.webp" 
                     alt="Consultório Acolhedor" 
                     className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     referrerPolicy="no-referrer"
@@ -634,7 +634,7 @@ export default function App() {
         <section id="abordagem" className="py-24 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/63RW2yH/ryna-ensaio-novo-5.png" 
+              src="/ryna-ensaio-novo-5.png" 
               alt="Consultório Ryna Hayashi" 
               className="w-full h-full object-cover opacity-20"
               referrerPolicy="no-referrer"
@@ -689,7 +689,7 @@ export default function App() {
                 <div className="w-full lg:w-1/3">
                   <div className="aspect-[4/5] rounded-[24px] md:rounded-[32px] overflow-hidden lg:rotate-3 shadow-lg hover:rotate-0 transition-transform duration-500 max-w-[300px] mx-auto lg:max-w-none">
                     <img 
-                      src="https://i.ibb.co/mVqL5QLg/ryna007.webp" 
+                      src="/ryna007.webp" 
                       alt="Ambiente acolhedor" 
                       className="w-full h-full object-cover object-center"
                       referrerPolicy="no-referrer"
